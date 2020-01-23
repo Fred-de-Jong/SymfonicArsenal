@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfonic Arsenal{% endblock %}
+
+{% block body %}
+    {% if weapons %}
+        <table id="weapons" class="table table-striped">
+         <thead>
+          <tr>
+           <th>Weapon Name</th>
+           <th>Actions</th>
+          </tr>
+         </thead>
+         <tbody>
+          {% for weapon in weapons %}
+            <tr>
+             <td>{{ weapon.name }}</td>
+             <td>
+              <a href="/weapon/{{weapon.id}}" class="btn btn-dark">Show</a>
+              <a href="/weapon/edit/{{weapon.id}}" class="btn btn-light">Edit</a>
+              <a href="#" class="btn btn-danger delete-weapon" data-id="{{weapon.id}}">Delete</a>
+             </td>
+            </tr>
+          {% endfor %}
+         </tbody> 
+        </table>
+    {% else %}
+        <p>The arsenal is empty</p>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}

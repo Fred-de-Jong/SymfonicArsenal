@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Weapon{% endblock %}
+
+{% block body %}
+  {{form_start(form)}}
+  {{form_widget(form)}}
+  {{form_end(form)}}
+{% endblock %}
+
+{# Dit is in effect hetzelfde als new.html.twig, maar voor overzicht bij eventuele uitbreidingen wordt het toch gescheiden #}
