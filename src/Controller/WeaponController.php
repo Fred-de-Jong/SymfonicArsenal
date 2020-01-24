@@ -2,6 +2,7 @@
  namespace App\Controller;
 
  use App\Entity\Weapon;
+ use App\Form\WeaponFormType;
 
  use Symfony\Component\HttpFoundation\Response;
  use Symfony\Component\HttpFoundation\Request;
@@ -32,10 +33,8 @@
      public function new(Request $request) {
          $weapon = new Weapon();
 
-         $form = $this->createFormBuilder($weapon)->add("name", TextType::class, array("attr" => array("class" => "form-control")))
-         ->add("body", TextareaType::class, array("attr" => array("class" => "form-control")))
-         ->add("save", SubmitType::class, array("label" => "Create", "attr" => array("class" => "btn btn-primary mt-3")))
-         ->getForm();
+         $form = $this->createForm(WeaponFormType::class, $weapon)->add("save", SubmitType::class, array("label" => "Create", "attr" => array("class" => "btn btn-primary mt-3")));
+
 
         $form->handleRequest($request);
 
@@ -61,10 +60,7 @@
         $weapon = new Weapon();
         $weapon = $this->getDoctrine()->getRepository(Weapon::class)->find($id);
 
-        $form = $this->createFormBuilder($weapon)->add("name", TextType::class, array("attr" => array("class" => "form-control")))
-        ->add("body", TextareaType::class, array("attr" => array("class" => "form-control")))
-        ->add("save", SubmitType::class, array("label" => "Update", "attr" => array("class" => "btn btn-primary mt-3")))
-        ->getForm();
+        $form = $this->createForm(WeaponFormType::class, $weapon)->add("save", SubmitType::class, array("label" => "Edit", "attr" => array("class" => "btn btn-primary mt-3")));
 
        $form->handleRequest($request);
 
