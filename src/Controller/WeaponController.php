@@ -60,7 +60,7 @@
         $weapon = new Weapon();
         $weapon = $this->getDoctrine()->getRepository(Weapon::class)->find($id);
 
-        $form = $this->createForm(WeaponFormType::class, $weapon)->add("save", SubmitType::class, array("label" => "Edit", "attr" => array("class" => "btn btn-primary mt-3")));
+        $form = $this->createForm(WeaponFormType::class, $weapon);
 
        $form->handleRequest($request);
 
@@ -101,27 +101,4 @@
             $response = new Response();
             $response->send();
      }
-
-
-
-
-    /**
-     * @Route("/weapon/save")
-     */
-
-     //Code hieronder is niet voor gebruik
-
-     //public function save() {
-     //    $entityManager = $this->getDoctrine() -> getManager();
-
-     //    $weapon = new Weapon();
-     //    $weapon->setName("Arming sword");
-     //    $weapon->setBody("This sword is a staple amongst knight and footman alike");
-
-     //    $entityManager->persist($weapon);
-
-     //    $entityManager->flush();
-        
-     //    return new Response("Saved a weapon with the id of ".$weapon->getId());
-    // }
  }
